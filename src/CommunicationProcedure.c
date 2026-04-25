@@ -3,7 +3,8 @@
 #include "LoadCoilControlProcedure.h"
 #include "InclineControlProcedure.h"
 #include "OperationModeProcedure.h"
-
+#include "GPIO_ControlProcedure.h"
+#define MAX_PWM 900
 uint8_t evt10msComm=false;
 uint8_t ucStartRx,ucEndRx,ucRxBuffer[RXTX_TEMP_MAX]={0,};
 uint8_t ucStartTx,ucEndTx,ucTxBuffer[RXTX_TEMP_MAX]={0,},ucTxCheckSum;

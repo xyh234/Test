@@ -31,9 +31,7 @@ void USART1_IRQHandler(void)
 
 int32_t main(void)
 {
-	DC_Motor_Init();
-	TIM_SetCmp1(TIM3,50);
-	TIM_SetCmp2(TIM3,50);
+		DC_Motor_Init();
     while(1)
     {
 		

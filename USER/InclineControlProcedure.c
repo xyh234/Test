@@ -483,6 +483,27 @@ void lift_motor_control(void)
 }
 
 
+void InlcineMotorStop(void)
+{
+		lift_motor_state=LIFT_STATE_STOP;
+}
+
+
+void InlcineMotorUp(void)
+{
+		lift_motor_state=LIFT_STATE_UP;
+}
+
+void InlcineMotorDown(void)
+{
+		lift_motor_state=LIFT_STATE_DOWN;
+}
+
+void InlcineMotorMove2Target(uint8_t Incline_Target)
+{
+	lift_motor_position_target=Incline_Target;
+}
+
 
 void TIM3_IRQHandler(void)
 {

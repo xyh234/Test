@@ -10,5 +10,7 @@ uint16_t ADC_GetData(uint8_t ADC_Channel);
 
 void adc(void);
 
+uint8_t getAdcIncline(void);
+
 
 #endif

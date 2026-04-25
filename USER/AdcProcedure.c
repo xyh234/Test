@@ -86,4 +86,8 @@ void adc(void)
         lift_vr_measured = filter10(vr);				
 }
 
+uint8_t getAdcIncline(void)
+{
+	return lift_vr_measured;
+}
 

@@ -1,0 +1,6 @@
+--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I .\USER -I .\USER\src -I .\firmware\CMSIS\device -I .\firmware\n32g43x_std_periph_driver\inc -I .\inc
+-I.\RTE\_Target_1
+-ID:\Keil\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include
+-ID:\Keil\ARM\PACK\Nationstech\N32G43x_DFP\1.2.0\firmware\CMSIS\device
+-D__UVISION_VERSION="526" -D_RTE_ -DN32G43X -DN32G435 -DUSE_STDPERIPH_DRIVER
+-o .\objects\gpio_control.o --omf_browse .\objects\gpio_control.crf --depend .\objects\gpio_control.d "GPIO_Control.c"

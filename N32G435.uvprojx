@@ -417,6 +417,21 @@
               <FileType>1</FileType>
               <FilePath>.\USER\InclineControlProcedure.c</FilePath>
             </File>
+            <File>
+              <FileName>InclineControlProcedure.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\USER\InclineControlProcedure.h</FilePath>
+            </File>
+            <File>
+              <FileName>GPIO_ControlProcedure.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\GPIO_ControlProcedure.c</FilePath>
+            </File>
+            <File>
+              <FileName>GPIO_ControlProcedure.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\USER\GPIO_ControlProcedure.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

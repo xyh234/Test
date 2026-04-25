@@ -43,6 +43,19 @@
 }
 
 
+void GPIO_Init(void)
+{
+	RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_GPIOB,ENABLE);
+	GPIO_InitType GPIO_InitStructure;
+	GPIO_InitStruct(&GPIO_InitStructure);
+	GPIO_InitStructure.GPIO_Current = GPIO_DC_4mA;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+	GPIO_InitStructure.GPIO_Pull = GPIO_No_Pull;
+	GPIO_InitStructure.Pin = GPIO_PIN_5;
+	GPIO_InitPeripheral(GPIOB,&GPIO_InitStructure);
+}
+
+
 void DC_Motor_Init(void)
 {
 	RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_GPIOA,ENABLE);
@@ -76,9 +89,47 @@ void DC_Motor_Init(void)
 	TIM_InitOc2(TIM3,&TIM_OCInitStruct);
 	
 	TIM_EnableCtrlPwmOutputs(TIM3,ENABLE);
+}
+
+
+void Tim1_Init(void)
+{
+	RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_GPIOA,ENABLE);
+	GPIO_InitType GPIO_InitStructure;
+	GPIO_InitStruct(&GPIO_InitStructure);
+	GPIO_InitStructure.GPIO_Current = GPIO_DC_4mA;
+	GPIO_InitStructure.GPIO_Alternate = GPIO_AF2_TIM1;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+	GPIO_InitStructure.GPIO_Pull = GPIO_No_Pull;
+	GPIO_InitStructure.Pin = GPIO_PIN_8;
+	GPIO_InitPeripheral(GPIOA,&GPIO_InitStructure);
 	
 	
+	RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_TIM1,ENABLE);
+	
+	TIM_TimeBaseInitType TIM_TimeBaseInitStruct;
+	TIM_TimeBaseInitStruct.ClkDiv = TIM_CLK_DIV1;
+	TIM_TimeBaseInitStruct.CntMode = TIM_CNT_MODE_UP;
+	TIM_TimeBaseInitStruct.Period = 1000-1;
+	TIM_TimeBaseInitStruct.Prescaler = 5;
+	TIM_InitTimeBase(TIM1,&TIM_TimeBaseInitStruct);
+	
+	TIM_Enable(TIM1,ENABLE);
+	
+	OCInitType TIM_OCInitStruct;
+	TIM_OCInitStruct.OcMode = TIM_OCMODE_PWM1;
+	TIM_OCInitStruct.OcPolarity = TIM_OC_POLARITY_HIGH;
+	TIM_OCInitStruct.Pulse = 0;
+	TIM_OCInitStruct.OutputState = ENABLE;
+	TIM_InitOc1(TIM1,&TIM_OCInitStruct);
+	
+	TIM_EnableCtrlPwmOutputs(TIM1,ENABLE);
+}
+
+void UART_Init(void)
+{
 	RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_GPIOB,ENABLE);
+	GPIO_InitType GPIO_InitStructure;
 	GPIO_InitStruct(&GPIO_InitStructure);
 	GPIO_InitStructure.GPIO_Current = GPIO_DC_4mA;
 	GPIO_InitStructure.GPIO_Alternate = GPIO_AF0_USART1;
@@ -86,10 +137,15 @@ void DC_Motor_Init(void)
 	GPIO_InitStructure.GPIO_Pull = GPIO_No_Pull;
 	GPIO_InitStructure.Pin = GPIO_PIN_6;
 	GPIO_InitPeripheral(GPIOB,&GPIO_InitStructure);
-}
-
-void UART_Init(void)
-{
+	
+	GPIO_InitStruct(&GPIO_InitStructure);
+	GPIO_InitStructure.GPIO_Current = GPIO_DC_4mA;
+	GPIO_InitStructure.GPIO_Alternate = GPIO_AF0_USART1;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Input;
+	GPIO_InitStructure.GPIO_Pull = GPIO_No_Pull;
+	GPIO_InitStructure.Pin = GPIO_PIN_7;
+	GPIO_InitPeripheral(GPIOB,&GPIO_InitStructure);
+	
 	RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_USART1,ENABLE);
 	USART_InitType USART_InitStruct;
 	USART_InitStruct.BaudRate = 9600;
