@@ -1,6 +1,6 @@
 
 /*
- * Auto generated Run-Time-Environment Configuration File
+ * Auto generated Run-Time-Environment Component Configuration File
  *      *** Do not modify ! ***
  *
  * Project: 'N32G435' 
@@ -15,7 +15,6 @@
  * Define the Device Header File: 
  */
 #define CMSIS_device_header "n32g43x.h"
-
 
 
 #endif /* RTE_COMPONENTS_H */
